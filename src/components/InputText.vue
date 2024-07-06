@@ -68,11 +68,20 @@ export default {
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const { modelValue } = toRefs(props)
+    const { modelValue, id } = toRefs(props)
     const internalValue = ref(modelValue.value)
 
+    const filterRutInput = (value) => {
+      return value.replace(/[^0-9kK-]+/g, '').toUpperCase()
+    }
+
     watch(modelValue, (newValue) => {
-      internalValue.value = newValue
+      if (id.value === 'rut') {
+        const filteredValue = filterRutInput(newValue)
+        internalValue.value = filteredValue
+      } else {
+        internalValue.value = newValue
+      }
     })
 
     const updateValue = (event) => {
