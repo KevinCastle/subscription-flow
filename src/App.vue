@@ -1,18 +1,22 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <main class="bg-primary">
+    <RouterView />
+  </main>
 </template>
 
-<style scoped></style>
+<script lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+
+export default {
+  setup() {
+    return {
+      RouterLink,
+      RouterView
+    }
+  }
+}
+</script>
+
+<style>
+@import '@/styles/index.scss';
+</style>
