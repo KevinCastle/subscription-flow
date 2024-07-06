@@ -1,0 +1,29 @@
+$white: #FFFFFF;
+$gray: #373D43;
+$violet: #853FEF;
+$red: #EF426F;
+$yellow: #F0F179;
+$critical: #EF4444;
+$tertiary: #ABADAF;
+$neutral: #585C60;
+$dark-300: #1E2022;
+$dark-500: #121416;
+$dark-700: #0E1012;
+$dark-900: #090A0B;
+
+$bg-primary: $dark-900;
+
+$content-primary: $white;
+$content-critical: $critical;
+$content-tertiary: $tertiary;
+$content-gray: #848586;
+
+$border-neutral: $neutral;
+$border-critical: $critical;
+$border-tertiary: $tertiary;
+$border-gray: $dark-300;
+
+$button-neutral-button-neutral-background-default: #2E3338;
+$button-primary-button-primary-background-default: $red;
+
+$linear-gradient-red: linear-gradient(97.06deg, $red 34.9%, $yellow 98.88%);
