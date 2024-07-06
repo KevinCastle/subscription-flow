@@ -12,11 +12,11 @@
     @input="updateValue"
   />
   <span
-    v-if="caption.length > 0"
+    v-if="errorMessage.length > 0 || caption.length > 0"
     class="input__caption"
     :class="{ 'input__caption--error': error }"
   >
-    {{ caption }}
+    {{ errorMessage || caption }}
   </span>
 </template>
 
@@ -53,6 +53,11 @@ export default {
     error: {
       type: Boolean,
       default: false,
+      required: false
+    },
+    errorMessage: {
+      type: String,
+      default: '',
       required: false
     },
     required: {
