@@ -101,28 +101,26 @@ export default {
   &__field {
     width: 100%;
     padding: 1rem 1.5rem;
-    border: 1px solid $border-neutral;
+    border: none;
+    outline: 1px solid $border-neutral;
     border-radius: 0.5rem;
     background-color: $bg-primary;
     color: $white;
     font-size: $font-size-lg;
     line-height: $line-height-lg;
-    transition: border 0.15s ease-in-out;
+    transition: outline 0.15s ease-in-out;
 
     &:hover {
-      border: 2px solid $border-tertiary;
+      outline: 2px solid $border-tertiary;
     }
 
-    &:focus {
-      border: 2px solid $border-secondary;
-    }
-
+    &:focus,
     &:focus-visible {
-      outline: none;
+      outline: 2px solid $border-secondary;
     }
 
     &--error {
-      border: 2px solid $border-critical;
+      outline: 2px solid $border-critical;
     }
   }
 
