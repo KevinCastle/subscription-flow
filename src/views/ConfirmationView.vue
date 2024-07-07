@@ -50,7 +50,7 @@
       <ButtonInput
         type="button"
         variant="outline"
-        aria-label="Ir a editar medio de pago"
+        label="Ir a editar medio de pago"
         text="Editar medio de pago"
         class="confirmation__edit-payment"
         :disabled="true"
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Card from '../components/CardComponent.vue'
 import ButtonInput from '../components/ButtonInput.vue'
@@ -93,6 +93,12 @@ export default {
     const email = computed(() => userStore.email)
     const region = computed(() => userStore.region)
     const router = useRouter()
+
+    onMounted(async () => {
+      if (!name.value) {
+        router.push('/')
+      }
+    })
 
     const confirmSubscription = () => {
       router.push('/loading')
