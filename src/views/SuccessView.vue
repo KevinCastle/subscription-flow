@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import useUserStore from '../stores/useUserStore'
 import ButtonInput from '../components/ButtonInput.vue'
 
@@ -31,12 +32,14 @@ export default {
   },
   setup() {
     const userStore = useUserStore()
+    const name = computed(() => userStore.name)
+    const router = useRouter()
 
     onMounted(async () => {
       userStore.setFinished(true)
-      // if (!name.value) {
-      //   router.push('/')
-      // }
+      if (!name.value) {
+        router.push('/')
+      }
     })
     return {}
   }
