@@ -9,7 +9,8 @@ const useUserStore = defineStore('user', {
     lastName: '',
     region: '',
     error: null,
-    loading: false
+    loading: false,
+    finished: false
   }),
   actions: {
     setEmail (value) {
@@ -37,6 +38,9 @@ const useUserStore = defineStore('user', {
       } finally {
         this.loading = false
       }
+    },
+    setFinished () {
+      this.finished = true
     }
   }
 })
