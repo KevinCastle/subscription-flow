@@ -47,7 +47,7 @@
         id="password"
         v-model="password"
         label="Crear una contraseña"
-        type="text"
+        type="password"
         caption="La contraseña debe ser al menos de 8 dígitos, que incluya números y letras"
         :error="!!errors.password"
         :error-message="errors.lastName"
@@ -56,7 +56,7 @@
         id="passwordConfirm"
         v-model="passwordConfirm"
         label="Valida tu contraseña"
-        type="text"
+        type="password"
         :error="!!errors.passwordConfirm"
         :error-message="errors.passwordConfirm"
       />
