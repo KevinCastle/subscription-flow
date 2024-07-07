@@ -80,7 +80,7 @@ import TextInput from '../components/TextInput.vue'
 import SelectInput from '../components/SelectInput.vue'
 import ButtonInput from '../components/ButtonInput.vue'
 import rutValidation from '../helpers/rutValidation'
-import fetchRegions from '../api/regionApi'
+import useUserStore from '../stores/useUserStore'
 
 export default {
   components: {
@@ -89,12 +89,12 @@ export default {
     ButtonInput
   },
   setup() {
-    const regions = ref([])
+    const userStore = useUserStore()
+    const regions = computed(() => userStore.regions)
     const validatedForm = ref(false)
 
     onMounted(async () => {
-      const fetchedRegions = await fetchRegions()
-      regions.value = fetchedRegions
+      await userStore.getRegions()
     })
 
     const validationSchema = yup.object({
@@ -148,9 +148,15 @@ export default {
       return !(!hasErrors && allFieldsFilled)
     })
 
+    const getRegionByCode = (code) => {
+      return regions.value.find((regionObject) => regionObject.codigo === code).nombre
+    }
+
     const onSubmit = handleSubmit((values) => {
-      // Handle form submission
-      console.log(values)
+      userStore.setEmail(values.email)
+      userStore.setName(values.name)
+      userStore.setLastName(values.lastName)
+      userStore.setRegion(getRegionByCode(values.region))
     })
 
     return {
