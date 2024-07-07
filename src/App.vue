@@ -19,8 +19,9 @@
           <component :is="Component" />
         </transition>
       </router-view>
-      <ErrorAlert />
+      <LoaderScreen />
     </section>
+    <ErrorAlert />
   </main>
 </template>
 
@@ -29,12 +30,14 @@ import { RouterLink, RouterView } from 'vue-router'
 import LogoCoponent from './components/LogoComponent.vue'
 import ButtonInput from './components/ButtonInput.vue'
 import ErrorAlert from './components/ErrorAlert.vue'
+import LoaderScreen from './components/LoaderScreen.vue'
 
 export default {
   components: {
     LogoCoponent,
     ButtonInput,
-    ErrorAlert
+    ErrorAlert,
+    LoaderScreen
   },
   setup() {
     return {
@@ -69,6 +72,7 @@ main {
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
