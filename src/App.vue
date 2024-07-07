@@ -19,6 +19,7 @@
           <component :is="Component" />
         </transition>
       </router-view>
+      <ErrorAlert />
     </section>
   </main>
 </template>
@@ -27,11 +28,13 @@
 import { RouterLink, RouterView } from 'vue-router'
 import LogoCoponent from './components/LogoComponent.vue'
 import ButtonInput from './components/ButtonInput.vue'
+import ErrorAlert from './components/ErrorAlert.vue'
 
 export default {
   components: {
     LogoCoponent,
-    ButtonInput
+    ButtonInput,
+    ErrorAlert
   },
   setup() {
     return {
