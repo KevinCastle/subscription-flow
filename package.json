@@ -15,10 +15,12 @@
     "pinia": "^2.1.7",
     "vee-validate": "^4.13.2",
     "vue": "^3.4.29",
+    "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^4.0.0",
     "@rushstack/eslint-patch": "^1.8.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-airbnb": "^8.0.0",

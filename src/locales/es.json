@@ -1,0 +1,42 @@
+{
+    "header": {
+        "help": "Ayuda"
+    },
+    "subscriptionForm": {
+        "email": {
+            "label": "Correo electrónico",
+            "caption": "Ingresa un correo válido para crear tu cuenta Zapping",
+            "placeholder": "Ingresa tu correo electrónico"
+        },
+        "name": {
+            "label": "Nombre",
+            "caption": "",
+            "placeholder": "Ingresa tu nombre"
+        },
+        "lastName": {
+            "label": "Apellido",
+            "caption": "",
+            "placeholder": "Ingresa tu apellido"
+        },
+        "rut": {
+            "label": "RUT",
+            "caption": "",
+            "placeholder": "12345678-9"
+        },
+        "region": {
+            "label": "Región",
+            "caption": "",
+            "placeholder": "Selecciona tu región"
+        },
+        "password": {
+            "label": "Crear una contraseña",
+            "caption": "La contraseña debe ser al menos de 8 dígitos, que incluya números y letras",
+            "placeholder": "Ingresa tu contraseña"
+        },
+        "passwordConfirm": {
+            "label": "Valida tu contraseña",
+            "caption": "",
+            "placeholder": "Vuelve a ingresar tu contraseña"
+        }
+    }
+}
