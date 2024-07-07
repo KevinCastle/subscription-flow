@@ -1,26 +1,28 @@
 <template>
-  <label :for="id" class="select__label">
-    {{ label }}
-    <span v-if="required" class="select__label--required">*</span>
-  </label>
-  <select
-    :id="id"
-    class="select__field"
-    :class="{ 'select__field--error': error }"
-    :value="internalValue"
-    @input="updateValue"
-  >
-    <option v-for="option in options" :key="option.codigo" :value="option.codigo">
-      {{ option.nombre }}
-    </option>
-  </select>
-  <span
-    v-if="errorMessage.length > 0 || caption.length > 0"
-    class="select__caption"
-    :class="{ 'select__caption--error': error }"
-  >
-    {{ errorMessage || caption }}
-  </span>
+  <div>
+    <label :for="id" class="select__label">
+      {{ label }}
+      <span v-if="required" class="select__label--required">*</span>
+    </label>
+    <select
+      :id="id"
+      class="select__field"
+      :class="{ 'select__field--error': error }"
+      :value="internalValue"
+      @input="updateValue"
+    >
+      <option v-for="option in options" :key="option.codigo" :value="option.codigo">
+        {{ option.nombre }}
+      </option>
+    </select>
+    <span
+      v-if="errorMessage.length > 0 || caption.length > 0"
+      class="select__caption"
+      :class="{ 'select__caption--error': error }"
+    >
+      {{ errorMessage || caption }}
+    </span>
+  </div>
 </template>
 
 <script>
@@ -133,6 +135,7 @@ export default {
     font-size: $font-size-sm;
     line-height: $line-height-sm;
     font-weight: $font-weight-500;
+    padding-top: 0.25rem;
 
     &--error {
       color: $critical;

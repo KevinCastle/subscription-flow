@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmit">
+    <form class="subscription-form" @submit.prevent="onSubmit">
       <TextInput
         id="email"
         v-model="email"
@@ -9,6 +9,7 @@
         caption="Ingresa un correo válido para crear tu cuenta Zapping"
         :error="!!errors.email"
         :error-message="errors.email"
+        class="subscription-form__email"
       />
       <TextInput
         id="name"
@@ -64,7 +65,7 @@
         variant="primary"
         label="Enviar formulario"
         text="Continuar"
-        class="w-100"
+        class="subscription-form__submit"
       />
     </form>
   </div>
@@ -150,4 +151,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.subscription-form {
+  display: grid;
+  gap: 12px;
+
+  &__email {
+    margin-bottom: 24px;
+  }
+
+  &__submit {
+    margin-top: 48px;
+    width: 100%;
+  }
+}
+</style>
