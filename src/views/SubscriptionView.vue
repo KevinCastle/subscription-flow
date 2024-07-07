@@ -107,16 +107,16 @@ export default {
           'Ingresa un correo válido para crear tu cuenta Zapping'
         )
         .required('El correo electrónico es requerido'),
-      name: yup.string().required('El nombre es requerido'),
-      lastName: yup
+      name: yup
         .string()
         .matches(/^[A-Za-z]+$/, 'El nombre solo debe contener letras')
-        .required('El apellido es requerido'),
-      rut: rutValidation,
-      region: yup
+        .required('El nombre es requerido'),
+      lastName: yup
         .string()
         .matches(/^[A-Za-z]+$/, 'El apellido solo debe contener letras')
-        .required('La región es requerida'),
+        .required('El apellido es requerido'),
+      rut: rutValidation,
+      region: yup.string().required('La región es requerida'),
       password: yup
         .string()
         .min(8, 'La contraseña debe ser al menos de 8 dígitos, que incluya números y letras')

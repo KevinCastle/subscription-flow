@@ -11,7 +11,7 @@
           href="https://www.zapping.com/ayuda"
           target="_blank"
           rel="noopener noreferrer"
-          class="help-button"
+          class="button--small help-button"
         />
       </header>
       <router-view v-slot="{ Component }">

@@ -105,6 +105,7 @@ export default {
       setTimeout(() => {
         router.push('/success')
         userStore.setLoading(false)
+        userStore.setFinished(true)
       }, 12000)
     }
 
