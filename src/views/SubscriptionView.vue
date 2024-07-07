@@ -59,7 +59,13 @@
         :error="!!errors.passwordConfirm"
         :error-message="errors.passwordConfirm"
       />
-      <ButtonInput type="submit" label="Enviar formulario" text="Continuar" />
+      <ButtonInput
+        type="submit"
+        variant="primary"
+        label="Enviar formulario"
+        text="Continuar"
+        class="w-100"
+      />
     </form>
   </div>
 </template>
