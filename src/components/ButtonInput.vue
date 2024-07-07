@@ -121,5 +121,12 @@ export default {
       cursor: not-allowed;
     }
   }
+
+  &--small {
+    padding: 0.5rem 0.75rem;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    font-weight: $font-weight-500;
+  }
 }
 </style>
