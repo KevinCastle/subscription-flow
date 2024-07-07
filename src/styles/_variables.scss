@@ -1,9 +1,30 @@
+// Font size variables
+$font-size-sm: 0.688rem;
+$font-size-md: 0.813rem;
+$font-size-lg: 1rem;
+$font-size-heading: 1.75rem;
+
+// Line height variables
+$line-height-sm: 16.5px;
+$line-height-md: 19.5px;
+$line-height-lg: 24px;
+$line-height-heading: 33.6px;
+
+// Font weight variables
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+
+// Color variables
 $white: #FFFFFF;
 $gray: #373D43;
 $violet: #853FEF;
 $red: #EF426F;
 $yellow: #F0F179;
 $critical: #EF4444;
+$secondary: #D5D6D7;
 $tertiary: #ABADAF;
 $neutral: #585C60;
 $dark-300: #1E2022;
@@ -18,12 +39,16 @@ $content-critical: $critical;
 $content-tertiary: $tertiary;
 $content-gray: #848586;
 
+
 $border-neutral: $neutral;
 $border-critical: $critical;
+$border-secondary: $secondary;
 $border-tertiary: $tertiary;
 $border-gray: $dark-300;
 
-$button-neutral-button-neutral-background-default: #2E3338;
-$button-primary-button-primary-background-default: $red;
+$button-neutral-background-disabled: #2E3338;
+$button-primary-background-default: $red;
+$button-primary-background-hover: #d73b63;
+$button-primary-background-active: #f0547d;
 
 $linear-gradient-red: linear-gradient(97.06deg, $red 34.9%, $yellow 98.88%);
