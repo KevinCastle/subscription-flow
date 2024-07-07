@@ -3,16 +3,16 @@
     <img src="../assets/Check.svg" alt="¡Todo listo!" width="100" height="85" />
     <div>
       <div class="success__content">
-        <p class="success__content__title">¡Muy bien!</p>
+        <p class="success__content__title">{{ $t('success.title') }}</p>
         <p class="success__content__subtitle">
-          Tu suscripción a Zapping está lista, ya puedes comenzar a ver TV.
+          {{ $t('success.subtitle') }}
         </p>
       </div>
       <ButtonInput
         type="button"
         variant="outline"
-        label="Ir a editar medio de pago"
-        text="Editar medio de pago"
+        :label="$t('confirmation.paymentMethod.button.label')"
+        :text="$t('confirmation.paymentMethod.button.text')"
         class="success__edit-payment"
         disabled
       />

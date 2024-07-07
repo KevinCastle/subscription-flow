@@ -1,6 +1,9 @@
 {
     "header": {
-        "help": "Ayuda"
+        "help": {
+            "label": "Solicitar ayuda",
+            "text": "Ayuda"
+        }
     },
     "subscriptionForm": {
         "email": {
@@ -37,6 +40,64 @@
             "label": "Valida tu contraseña",
             "caption": "",
             "placeholder": "Vuelve a ingresar tu contraseña"
+        },
+        "submit": {
+            "label": "Enviar formulario",
+            "text": "Continuar"
         }
+    },
+    "confirmation": {
+        "title": "Confirma tu suscripción",
+        "email": {
+            "label": "Correo electrónico"
+        },
+        "name": {
+            "label": "Nombre"
+        },
+        "region": {
+            "label": "Región"
+        },
+        "plan": {
+            "title": "Plan Lite+",
+            "price": "$13.900",
+            "duration": "3 meses",
+            "description": "Promoción activa: 3 meses por $00.000.\n A partir del 00/00/00, $00.000/mes"
+        },
+        "badge": {
+            "title": "Promo"
+        },
+        "trial": {
+            "title": "INCLUYE",
+            "description": "7 días de prueba",
+            "duration": "A partir del 00/00/00, $00.000/mes",
+            "price": "Gratis"
+        },
+        "paymentMethod": {
+            "title": "Método de pago",
+            "button": {
+                "label": "Ir a editar medio de pago",
+                "text": "Editar medio de pago"
+            }
+        },
+        "total": {
+            "title": "Pagas ahora"
+        },
+        "terms": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+        "submit": {
+            "label": "Confirmar suscripción",
+            "text": "Iniciar ahora"
+        }
+    },
+    "loading": {
+        "title": "Estamos procesando tu solicitud",
+        "slider": {
+            "first": "Alineando satélites",
+            "second": "Calculando el tiempo para el próximo comercial",
+            "third": "Preparando cabritas virtuales"
+        }
+    },
+    "success": {
+        "title": "¡Muy bien!",
+        "subtitle": "Tu suscripción a Zapping está lista, ya puedes comenzar a ver TV."
     }
 }

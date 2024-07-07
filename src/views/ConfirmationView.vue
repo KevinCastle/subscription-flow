@@ -1,43 +1,45 @@
 <template>
   <article class="confirmation">
-    <h2 class="confirmation__title">Confirma tu suscripción</h2>
+    <h2 class="confirmation__title">{{ $t('confirmation.title') }}</h2>
     <Card>
       <div class="confirmation__user--email">
-        <span class="confirmation__label">Correo electrónico</span>
+        <span class="confirmation__label">{{ $t('confirmation.email.label') }}</span>
         <p class="confirmation__subtitle">{{ email }}</p>
       </div>
       <div class="confirmation__user">
-        <span class="confirmation__label">Nombre</span>
+        <span class="confirmation__label">{{ $t('confirmation.name.label') }}</span>
         <p class="confirmation__small">{{ name }} {{ lastName }}</p>
       </div>
       <div class="confirmation__user">
-        <span class="confirmation__label">Región</span>
+        <span class="confirmation__label">{{ $t('confirmation.region.label') }}</span>
         <p class="confirmation__small">{{ region }}</p>
       </div>
     </Card>
     <Card>
-      <p class="confirmation__subtitle">Plan Lite+</p>
+      <p class="confirmation__subtitle">{{ $t('confirmation.plan.title') }}</p>
       <div class="confirmation__price">
-        <p class="confirmation__subtitle">$13.900</p>
-        <span class="confirmation__xs">/3 meses</span>
-        <div class="confirmation__badge">Promo</div>
+        <p class="confirmation__subtitle">{{ $t('confirmation.plan.price') }}</p>
+        <span class="confirmation__xs">/{{ $t('confirmation.plan.duration') }}</span>
+        <div class="confirmation__badge">{{ $t('confirmation.badge.title') }}</div>
       </div>
       <p class="confirmation__xs">
-        Promoción activa: 3 meses por $00.000. A partir del 00/00/00, $00.000/mes
+        {{ $t('confirmation.plan.description') }}
       </p>
       <div class="confirmation__trial">
         <div class="confirmation__trial__container">
           <div>
-            <p class="confirmation__xs">INCLUYE</p>
-            <p class="confirmation__subtitle--gradient">7 días de prueba</p>
-            <p class="confirmation__xs">A partir del 00/00/00, $00.000/mes</p>
+            <p class="confirmation__xs">{{ $t('confirmation.trial.title') }}</p>
+            <p class="confirmation__subtitle--gradient">
+              {{ $t('confirmation.trial.description') }}
+            </p>
+            <p class="confirmation__xs">{{ $t('confirmation.trial.duration') }}</p>
           </div>
-          <p class="confirmation__subtitle--regular">Gratis</p>
+          <p class="confirmation__subtitle--regular">{{ $t('confirmation.trial.price') }}</p>
         </div>
       </div>
       <hr />
       <div class="confirmation__payment-method">
-        <span class="confirmation__label">Método de pago</span>
+        <span class="confirmation__label">{{ $t('confirmation.paymentMethod.title') }}</span>
         <img
           class="confirmation__mastercard"
           src="../assets/Mastercard.svg"
@@ -50,25 +52,24 @@
       <ButtonInput
         type="button"
         variant="outline"
-        label="Ir a editar medio de pago"
-        text="Editar medio de pago"
+        :label="$t('confirmation.paymentMethod.button.label')"
+        :text="$t('confirmation.paymentMethod.button.text')"
         class="confirmation__edit-payment"
         :disabled="true"
       />
     </Card>
     <div class="justify-between">
-      <p class="confirmation__title">Pagas ahora</p>
+      <p class="confirmation__title">{{ $t('confirmation.total.title') }}</p>
       <p class="confirmation__title">$0</p>
     </div>
     <p class="confirmation__xs">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam
+      {{ $t('confirmation.terms') }}
     </p>
     <ButtonInput
       type="button"
       variant="primary"
-      label="Confirmar suscripción"
-      text="Iniciar ahora"
+      :label="$t('confirmation.submit.label')"
+      :text="$t('confirmation.submit.text')"
       @click="confirmSubscription"
     />
   </article>

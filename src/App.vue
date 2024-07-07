@@ -4,8 +4,8 @@
       <header>
         <LogoCoponent />
         <ButtonInput
-          label="Solicitar ayuda"
-          text="Ayuda"
+          :label="$t('header.help.label')"
+          :text="$t('header.help.text')"
           variant="neutral"
           type="link"
           href="https://www.zapping.com/ayuda"
