@@ -1,17 +1,27 @@
 <template>
-  <Transition name="fade" mode="out-in">
-    <div v-if="loading" class="loading-screen">
-      <p>cargando datos</p>
-      <div class="loading-screen__loader" />
-    </div>
-  </Transition>
+  <transition name="fade" mode="out-in">
+    <article v-if="loading" class="loader-screen">
+      <div class="loader-screen__circle">
+        <div class="loader-screen__circle__container">
+          <SmallLogoComponent />
+        </div>
+      </div>
+      <SlidingText />
+    </article>
+  </transition>
 </template>
 
 <script>
 import { computed } from 'vue'
 import useUserStore from '../stores/useUserStore'
+import SmallLogoComponent from './SmallLogoComponent.vue'
+import SlidingText from './SlidingText.vue'
 
 export default {
+  components: {
+    SmallLogoComponent,
+    SlidingText
+  },
   setup() {
     const userStore = useUserStore()
     const loading = computed(() => userStore.loading)
@@ -24,62 +34,66 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.loading-screen {
+.loader-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: $content-primary;
+  background-color: $bg-primary;
 
-  &__loader {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: block;
-    margin: 15px auto;
+  &__circle {
     position: relative;
-    background: $yellow;
-    box-shadow:
-      -24px 0 $yellow,
-      24px 0 $yellow;
-    box-sizing: border-box;
-    animation: dots 2s linear infinite;
+    background: $linear-gradient-red;
+    padding: 4px;
+    border-radius: 50%;
+    width: 190px;
+    height: 190px;
+    margin-bottom: 5rem;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: $dark-900;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: 0.75px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: growAndFade 2s infinite ease-in-out;
+    }
   }
 
-  @keyframes dots {
-    33% {
-      background: $yellow;
-      box-shadow:
-        -24px 0 $red,
-        24px 0 $yellow;
-    }
-    66% {
-      background: $red;
-      box-shadow:
-        -24px 0 $yellow,
-        24px 0 $yellow;
+  @keyframes growAndFade {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
     }
     100% {
-      background: $yellow;
-      box-shadow:
-        -24px 0 $yellow,
-        24px 0 $red;
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0;
     }
+  }
+
+  @media (min-width: 480px) {
+    border-radius: 1rem;
   }
 }
 </style>
