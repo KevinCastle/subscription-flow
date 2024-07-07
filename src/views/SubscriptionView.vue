@@ -1,71 +1,92 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmit"></form>
-    <InputText
-      id="email"
-      v-model="email"
-      label="Correo electrónico"
-      type="email"
-      caption="Ingresa un correo válido para crear tu cuenta Zapping"
-      :error="!!errors.email"
-      :error-message="errors.email"
-    />
-    <InputText
-      id="name"
-      v-model="name"
-      label="Nombre"
-      type="text"
-      :error="!!errors.name"
-      :error-message="errors.name"
-    />
-    <InputText
-      id="lastname"
-      v-model="lastName"
-      label="Apellido"
-      type="text"
-      :error="!!errors.lastName"
-      :error-message="errors.lastName"
-    />
-    <InputText
-      id="rut"
-      v-model="rut"
-      label="RUT"
-      type="text"
-      :error="!!errors.rut"
-      :error-message="errors.rut"
-    />
-    <InputText
-      id="password"
-      v-model="password"
-      label="Crear una contraseña"
-      type="text"
-      caption="La contraseña debe ser al menos de 8 dígitos, que incluya números y letras"
-      :error="!!errors.password"
-      :error-message="errors.lastName"
-    />
-    <InputText
-      id="passwordConfirm"
-      v-model="passwordConfirm"
-      label="Valida tu contraseña"
-      type="text"
-      :error="!!errors.passwordConfirm"
-      :error-message="errors.passwordConfirm"
-    />
-    <button type="submit">Subscribe</button>
+    <form @submit.prevent="onSubmit">
+      <TextInput
+        id="email"
+        v-model="email"
+        label="Correo electrónico"
+        type="email"
+        caption="Ingresa un correo válido para crear tu cuenta Zapping"
+        :error="!!errors.email"
+        :error-message="errors.email"
+      />
+      <TextInput
+        id="name"
+        v-model="name"
+        label="Nombre"
+        type="text"
+        :error="!!errors.name"
+        :error-message="errors.name"
+      />
+      <TextInput
+        id="lastname"
+        v-model="lastName"
+        label="Apellido"
+        type="text"
+        :error="!!errors.lastName"
+        :error-message="errors.lastName"
+      />
+      <TextInput
+        id="rut"
+        v-model="rut"
+        label="RUT"
+        type="text"
+        :error="!!errors.rut"
+        :error-message="errors.rut"
+      />
+      <SelectInput
+        id="region"
+        v-model="region"
+        label="Región"
+        :options="regions"
+        :error="!!errors.region"
+        :error-message="errors.region"
+      />
+      <TextInput
+        id="password"
+        v-model="password"
+        label="Crear una contraseña"
+        type="text"
+        caption="La contraseña debe ser al menos de 8 dígitos, que incluya números y letras"
+        :error="!!errors.password"
+        :error-message="errors.lastName"
+      />
+      <TextInput
+        id="passwordConfirm"
+        v-model="passwordConfirm"
+        label="Valida tu contraseña"
+        type="text"
+        :error="!!errors.passwordConfirm"
+        :error-message="errors.passwordConfirm"
+      />
+      <ButtonInput type="submit" label="Enviar formulario" text="Continuar" />
+    </form>
   </div>
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
-import InputText from '../components/InputText.vue'
+import TextInput from '../components/TextInput.vue'
+import SelectInput from '../components/SelectInput.vue'
 import rutValidation from '../helpers/rutValidation'
+import fetchRegions from '../api/regionApi'
 
 export default {
   components: {
-    InputText
+    TextInput,
+    SelectInput,
+
   },
   setup() {
+    const regions = ref([])
+
+    onMounted(async () => {
+      const fetchedRegions = await fetchRegions()
+      regions.value = fetchedRegions
+    })
+
     const validationSchema = yup.object({
       email: yup
         .string()
@@ -115,7 +136,8 @@ export default {
       password,
       passwordConfirm,
       errors,
-      onSubmit
+      onSubmit,
+      regions
     }
   }
 }
