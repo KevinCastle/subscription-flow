@@ -67,7 +67,7 @@
     <ButtonInput
       type="button"
       variant="primary"
-      aria-label="Confirmar suscripción"
+      label="Confirmar suscripción"
       text="Iniciar ahora"
       @click="confirmSubscription"
     />
