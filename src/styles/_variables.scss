@@ -46,7 +46,9 @@ $border-secondary: $secondary;
 $border-tertiary: $tertiary;
 $border-gray: $dark-300;
 
-$button-neutral-button-neutral-background-default: #2E3338;
-$button-primary-button-primary-background-default: $red;
+$button-neutral-background-disabled: #2E3338;
+$button-primary-background-default: $red;
+$button-primary-background-hover: #d73b63;
+$button-primary-background-active: #f0547d;
 
 $linear-gradient-red: linear-gradient(97.06deg, $red 34.9%, $yellow 98.88%);

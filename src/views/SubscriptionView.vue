@@ -70,6 +70,7 @@ import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
 import TextInput from '../components/TextInput.vue'
 import SelectInput from '../components/SelectInput.vue'
+import ButtonInput from '../components/ButtonInput.vue'
 import rutValidation from '../helpers/rutValidation'
 import fetchRegions from '../api/regionApi'
 
@@ -77,7 +78,7 @@ export default {
   components: {
     TextInput,
     SelectInput,
-
+    ButtonInput
   },
   setup() {
     const regions = ref([])
