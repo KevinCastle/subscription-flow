@@ -66,13 +66,14 @@
         label="Enviar formulario"
         text="Continuar"
         class="subscription-form__submit"
+        :disabled="isFormValid"
       />
     </form>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
 import TextInput from '../components/TextInput.vue'
@@ -89,6 +90,7 @@ export default {
   },
   setup() {
     const regions = ref([])
+    const validatedForm = ref(false)
 
     onMounted(async () => {
       const fetchedRegions = await fetchRegions()
@@ -130,6 +132,22 @@ export default {
     const { value: password } = useField('password')
     const { value: passwordConfirm } = useField('passwordConfirm')
 
+    // Computed property to monitor form validity
+    const isFormValid = computed(() => {
+      const hasErrors = Object.keys(errors.value).length > 0
+
+      const allFieldsFilled =
+        email.value &&
+        name.value &&
+        lastName.value &&
+        rut.value &&
+        region.value &&
+        password.value &&
+        passwordConfirm.value
+
+      return !(!hasErrors && allFieldsFilled)
+    })
+
     const onSubmit = handleSubmit((values) => {
       // Handle form submission
       console.log(values)
@@ -145,7 +163,9 @@ export default {
       passwordConfirm,
       errors,
       onSubmit,
-      regions
+      regions,
+      validatedForm,
+      isFormValid
     }
   }
 }
