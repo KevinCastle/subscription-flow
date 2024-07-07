@@ -46,9 +46,19 @@ $border-secondary: $secondary;
 $border-tertiary: $tertiary;
 $border-gray: $dark-300;
 
-$button-neutral-background-disabled: #2E3338;
 $button-primary-background-default: $red;
 $button-primary-background-hover: #d73b63;
 $button-primary-background-active: #f0547d;
+$button-primary-background-disabled: #2E3338;
+$button-neutral-background-default: $gray;
+$button-neutral-background-hover: $neutral;
+$button-neutral-background-active: $neutral;
+
+$button-outline-border-default: $red;
+$button-outline-border-hover: #d73b63;
+$button-outline-border-active: #f0547d;
+$button-outline-border-disabled: #2E3338;
+
 
 $linear-gradient-red: linear-gradient(97.06deg, $red 34.9%, $yellow 98.88%);
+$linear-gradient-dark: linear-gradient(97.06deg, rgba(239, 66, 111, 0.5) 34.9%, rgba(240, 241, 121, 0.5) 98.88%);

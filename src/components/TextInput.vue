@@ -1,23 +1,25 @@
 <template>
-  <label :for="id" class="input__label">
-    {{ label }}
-    <span v-if="required" class="input__label--required">*</span>
-  </label>
-  <input
-    :id="id"
-    class="input__field"
-    :class="{ 'input__field--error': error }"
-    :value="internalValue"
-    :type="type"
-    @input="updateValue"
-  />
-  <span
-    v-if="errorMessage.length > 0 || caption.length > 0"
-    class="input__caption"
-    :class="{ 'input__caption--error': error }"
-  >
-    {{ errorMessage || caption }}
-  </span>
+  <div>
+    <label :for="id" class="input__label">
+      {{ label }}
+      <span v-if="required" class="input__label--required">*</span>
+    </label>
+    <input
+      :id="id"
+      class="input__field"
+      :class="{ 'input__field--error': error }"
+      :value="internalValue"
+      :type="type"
+      @input="updateValue"
+    />
+    <span
+      v-if="errorMessage.length > 0 || caption.length > 0"
+      class="input__caption"
+      :class="{ 'input__caption--error': error }"
+    >
+      {{ errorMessage || caption }}
+    </span>
+  </div>
 </template>
 
 <script>
@@ -139,6 +141,7 @@ export default {
     font-size: $font-size-sm;
     line-height: $line-height-sm;
     font-weight: $font-weight-500;
+    padding-top: 0.25rem;
 
     &--error {
       color: $critical;

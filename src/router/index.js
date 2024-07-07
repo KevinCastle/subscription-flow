@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SubscriptionView from '@/views/SubscriptionView.vue'
+import SubscriptionView from '../views/SubscriptionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'subscription',
       component: SubscriptionView
     },
+    {
+      path: '/confirmation',
+      name: 'confirmation',
+      component: () => import('../views/ConfirmationView.vue')
+    }
   ]
 })
 

@@ -1,5 +1,21 @@
 <template>
-  <button :type="type" :aria-label="label" :disabled="disabled" class="button">{{ text }}</button>
+  <a
+    v-if="type === 'link'"
+    :href="href"
+    :aria-label="label"
+    :class="['button', `button--${variant}`]"
+  >
+    {{ text }}
+  </a>
+  <button
+    v-else
+    :type="type"
+    :aria-label="label"
+    :disabled="disabled"
+    :class="['button', `button--${variant}`]"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script>
@@ -15,6 +31,11 @@ export default {
       default: '',
       required: true
     },
+    variant: {
+      type: String,
+      default: 'primary',
+      required: true
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -23,6 +44,11 @@ export default {
     type: {
       type: String,
       default: 'button',
+      required: false
+    },
+    href: {
+      type: String,
+      default: '',
       required: false
     }
   },
@@ -37,28 +63,63 @@ export default {
   border: none;
   border-radius: 32px;
   padding: 0.75rem 1.5rem;
-  width: 100%;
-  background-color: $button-primary-background-default;
   color: $white;
+  font-family: 'Poppins', sans-serif;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
   font-weight: $font-weight-600;
+  text-decoration: none;
   transition:
     background-color 0.15s ease-in-out,
     color 0.15s ease-in-out;
 
-  &:hover {
-    background-color: $button-primary-background-hover;
+  &--primary {
+    background-color: $button-primary-background-default;
+
+    &:hover {
+      background-color: $button-primary-background-hover;
+    }
+
+    &:active {
+      background-color: $button-primary-background-active;
+    }
+
+    &:disabled {
+      background-color: $button-primary-background-disabled;
+      color: $neutral;
+      cursor: not-allowed;
+    }
   }
 
-  &:active {
-    background-color: $button-primary-background-active;
+  &--neutral {
+    background-color: $button-neutral-background-default;
+
+    &:hover {
+      background-color: $button-neutral-background-hover;
+    }
+
+    &:active {
+      background-color: $button-neutral-background-active;
+    }
   }
 
-  &:disabled {
-    background-color: $button-neutral-background-disabled;
-    color: $neutral;
-    cursor: not-allowed;
+  &--outline {
+    background-color: transparent;
+    outline: 1px solid $button-outline-border-default;
+    transition: outline 0.15s ease-in-out;
+
+    &:hover {
+      outline: 2px solid $button-outline-border-hover;
+    }
+
+    &:active {
+      outline: 2px solid $button-outline-border-active;
+    }
+    &:disabled {
+      outline-color: $button-outline-border-disabled;
+      color: $neutral;
+      cursor: not-allowed;
+    }
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmit">
+    <form class="subscription-form" @submit.prevent="onSubmit">
       <TextInput
         id="email"
         v-model="email"
@@ -9,6 +9,7 @@
         caption="Ingresa un correo válido para crear tu cuenta Zapping"
         :error="!!errors.email"
         :error-message="errors.email"
+        class="subscription-form__email"
       />
       <TextInput
         id="name"
@@ -46,7 +47,7 @@
         id="password"
         v-model="password"
         label="Crear una contraseña"
-        type="text"
+        type="password"
         caption="La contraseña debe ser al menos de 8 dígitos, que incluya números y letras"
         :error="!!errors.password"
         :error-message="errors.lastName"
@@ -55,24 +56,32 @@
         id="passwordConfirm"
         v-model="passwordConfirm"
         label="Valida tu contraseña"
-        type="text"
+        type="password"
         :error="!!errors.passwordConfirm"
         :error-message="errors.passwordConfirm"
       />
-      <ButtonInput type="submit" label="Enviar formulario" text="Continuar" />
+      <ButtonInput
+        type="submit"
+        variant="primary"
+        label="Enviar formulario"
+        text="Continuar"
+        class="subscription-form__submit"
+        :disabled="isFormValid"
+      />
     </form>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
+import { useRouter } from 'vue-router'
 import TextInput from '../components/TextInput.vue'
 import SelectInput from '../components/SelectInput.vue'
 import ButtonInput from '../components/ButtonInput.vue'
 import rutValidation from '../helpers/rutValidation'
-import fetchRegions from '../api/regionApi'
+import useUserStore from '../stores/useUserStore'
 
 export default {
   components: {
@@ -81,11 +90,13 @@ export default {
     ButtonInput
   },
   setup() {
-    const regions = ref([])
+    const userStore = useUserStore()
+    const regions = computed(() => userStore.regions)
+    const validatedForm = ref(false)
+    const router = useRouter()
 
     onMounted(async () => {
-      const fetchedRegions = await fetchRegions()
-      regions.value = fetchedRegions
+      await userStore.getRegions()
     })
 
     const validationSchema = yup.object({
@@ -123,9 +134,33 @@ export default {
     const { value: password } = useField('password')
     const { value: passwordConfirm } = useField('passwordConfirm')
 
+    // Computed property to monitor form validity
+    const isFormValid = computed(() => {
+      const hasErrors = Object.keys(errors.value).length > 0
+
+      const allFieldsFilled =
+        email.value &&
+        name.value &&
+        lastName.value &&
+        rut.value &&
+        region.value &&
+        password.value &&
+        passwordConfirm.value
+
+      return !(!hasErrors && allFieldsFilled)
+    })
+
+    const getRegionByCode = (code) => {
+      return regions.value.find((regionObject) => regionObject.codigo === code).nombre
+    }
+
     const onSubmit = handleSubmit((values) => {
-      // Handle form submission
-      console.log(values)
+      userStore.setEmail(values.email)
+      userStore.setName(values.name)
+      userStore.setLastName(values.lastName)
+      userStore.setRegion(getRegionByCode(values.region))
+
+      router.push('/confirmation')
     })
 
     return {
@@ -138,10 +173,26 @@ export default {
       passwordConfirm,
       errors,
       onSubmit,
-      regions
+      regions,
+      validatedForm,
+      isFormValid
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.subscription-form {
+  display: grid;
+  gap: 12px;
+
+  &__email {
+    margin-bottom: 24px;
+  }
+
+  &__submit {
+    margin-top: 48px;
+    width: 100%;
+  }
+}
+</style>
