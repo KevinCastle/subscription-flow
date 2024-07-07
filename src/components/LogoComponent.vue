@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import useUserStore from '../stores/useUserStore'
 
 export default {
@@ -33,10 +33,15 @@ export default {
     const initialColor = ref('#1E2022')
     const endColor = ref('#1E2022')
 
-    if (finished.value === true) {
-      initialColor.value = '#EF426F'
-      endColor.value = '#F0F179'
-    }
+    watchEffect(() => {
+      if (finished.value === true) {
+        initialColor.value = '#EF426F'
+        endColor.value = '#F0F179'
+      } else {
+        initialColor.value = '#1E2022'
+        endColor.value = '#1E2022'
+      }
+    })
 
     return { initialColor, endColor }
   }

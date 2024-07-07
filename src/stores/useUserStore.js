@@ -34,11 +34,11 @@ const useUserStore = defineStore('user', {
         this.error = null
       }
     },
-    setLoading (state) {
-      this.loading = state
+    setLoading (value) {
+      this.loading = value
     },
-    setFinished () {
-      this.finished = true
+    setFinished (value) {
+      this.finished = value
     }
   }
 })
