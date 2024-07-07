@@ -10,6 +10,7 @@
       :class="{ 'input__field--error': error }"
       :value="internalValue"
       :type="type"
+      :placeholder="placeholder"
       @input="updateValue"
     />
     <span
@@ -48,6 +49,11 @@ export default {
       required: true
     },
     caption: {
+      type: String,
+      default: '',
+      required: false
+    },
+    placeholder: {
       type: String,
       default: '',
       required: false
@@ -103,6 +109,7 @@ export default {
     font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $font-weight-600;
+    padding-bottom: 0.25rem;
 
     &--required {
       color: $red;
