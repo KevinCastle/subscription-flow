@@ -101,7 +101,11 @@ export default {
     })
 
     const confirmSubscription = () => {
-      router.push('/loading')
+      userStore.setLoading(true)
+      setTimeout(() => {
+        router.push('/success')
+        userStore.setLoading(false)
+      }, 12000)
     }
 
     return { name, lastName, email, region, confirmSubscription }
