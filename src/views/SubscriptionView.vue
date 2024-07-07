@@ -76,6 +76,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
+import { useRouter } from 'vue-router'
 import TextInput from '../components/TextInput.vue'
 import SelectInput from '../components/SelectInput.vue'
 import ButtonInput from '../components/ButtonInput.vue'
@@ -92,6 +93,7 @@ export default {
     const userStore = useUserStore()
     const regions = computed(() => userStore.regions)
     const validatedForm = ref(false)
+    const router = useRouter()
 
     onMounted(async () => {
       await userStore.getRegions()
@@ -157,6 +159,8 @@ export default {
       userStore.setName(values.name)
       userStore.setLastName(values.lastName)
       userStore.setRegion(getRegionByCode(values.region))
+
+      router.push('/confirmation')
     })
 
     return {
