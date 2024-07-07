@@ -26,12 +26,14 @@ const useUserStore = defineStore('user', {
     },
     async getRegions () {
       try {
-        this.error = null
         this.loading = true
-        const regionsData = await fetchRegions()
-        this.regions = regionsData
-      } catch {
-        this.error = 'No se pudieron cargar las regiones'
+        const { data, error } = await fetchRegions()
+        if (error) {
+          this.error = error
+        } else {
+          this.regions = data
+          this.error = null
+        }
       } finally {
         this.loading = false
       }

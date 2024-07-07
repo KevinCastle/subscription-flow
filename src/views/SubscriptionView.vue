@@ -134,7 +134,6 @@ export default {
     const { value: password } = useField('password')
     const { value: passwordConfirm } = useField('passwordConfirm')
 
-    // Computed property to monitor form validity
     const isFormValid = computed(() => {
       const hasErrors = Object.keys(errors.value).length > 0
 

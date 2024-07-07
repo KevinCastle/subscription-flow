@@ -14,8 +14,14 @@
           class="help-button"
         />
       </header>
-      <RouterView />
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      <LoaderScreen />
     </section>
+    <ErrorAlert />
   </main>
 </template>
 
@@ -23,11 +29,15 @@
 import { RouterLink, RouterView } from 'vue-router'
 import LogoCoponent from './components/LogoComponent.vue'
 import ButtonInput from './components/ButtonInput.vue'
+import ErrorAlert from './components/ErrorAlert.vue'
+import LoaderScreen from './components/LoaderScreen.vue'
 
 export default {
   components: {
     LogoCoponent,
-    ButtonInput
+    ButtonInput,
+    ErrorAlert,
+    LoaderScreen
   },
   setup() {
     return {
@@ -62,6 +72,7 @@ main {
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,5 +92,15 @@ main {
 
 .help-button {
   width: fit-content;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
