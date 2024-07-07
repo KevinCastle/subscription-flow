@@ -97,6 +97,7 @@ export default {
     font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $font-weight-600;
+    padding-bottom: 0.25rem;
 
     &--required {
       color: $red;

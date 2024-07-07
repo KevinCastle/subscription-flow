@@ -1,15 +1,15 @@
 <template>
   <div class="sliding-text">
-    <p class="sliding-text__title">Estamos preparando tu plan</p>
+    <p class="sliding-text__title">{{ $t('loading.title') }}</p>
     <ul class="sliding-text__slider">
       <li class="sliding-text__slider__item sliding-text__slider__item--firt">
-        Alineando satélites
+        {{ $t('loading.slider.first') }}
       </li>
       <li class="sliding-text__slider__item sliding-text__slider__item--second">
-        Calculando el tiempo para el próximo comercial
+        {{ $t('loading.slider.second') }}
       </li>
       <li class="sliding-text__slider__item sliding-text__slider__item--third">
-        Preparando cabritas virtuales
+        {{ $t('loading.slider.third') }}
       </li>
     </ul>
   </div>

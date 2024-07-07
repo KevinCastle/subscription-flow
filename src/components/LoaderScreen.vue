@@ -93,6 +93,8 @@ export default {
   }
 
   @media (min-width: 480px) {
+    position: absolute;
+    height: 100%;
     border-radius: 1rem;
   }
 }
